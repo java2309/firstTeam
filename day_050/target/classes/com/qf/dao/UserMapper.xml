@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+1.namespace:  命名空间   接口的全限定名字   包名+ 接口名字
+-->
+<mapper namespace="com.qf.dao.UserDao">
+    <!--    2.id属性  的值一定是接口下面某一个方法的名字
+            3.resultType属性 查询出来的数据存到list集合中  指定当前List集合中的e
+            元素是哪个
+    -->
+    <select id="findAllUser" resultType="com.qf.pojo.User">
+        select * from t_user
+    </select>
+<!--添加和查询有一些不一样-->
+    <insert id="addUser">
+        insert into t_user (name, password) values ("狗蛋", "123456")
+    </insert>
+</mapper>

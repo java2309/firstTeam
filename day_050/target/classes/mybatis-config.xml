@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--configuration  配置的意思-->
+<configuration>
+<!--    引入外部的配置文件-->
+    <properties resource="db.properties"/>
+<!--    environments环境的意思-->
+    <environments default="development">
+        <environment id="development">
+<!--       transactionManager  事务管理器     -->
+            <transactionManager type="JDBC"/>
+<!--            核心就是 dataSource  数据源-->
+            <dataSource type="POOLED">
+<!--          property value 读取db.properties文件中的配置信息      -->
+                <property name="driver" value="${db.driverClassName}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--相当重要！！！ 指定映射配置文件的位置，映射配置文件指的是每个接口独立的配置文件 -->
+    <!--注册Mapper,上面都cv-->
+    <mappers>
+        <mapper resource="com/qf/dao/UserMapper.xml"></mapper>
+    </mappers>
+</configuration>
