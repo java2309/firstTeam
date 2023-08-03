@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="D:\ideasomething\day49_layui\web\css\layui.css">
+   <!-- https://www.layuicdn.com/layui-v2.5.6/css/layui.css
+    D:\ideasomething\day49_layui\web\css\layui.css
+-->
+    <script src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<!--添加-->
+<form class="layui-form" action="" id="addForm" style="display:none" lay-filter="add" enctype="multipart/form-data">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">名字</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="请输入您的名字" class="layui-input">
+        </div>
+        <label class="layui-form-label">年龄</label>
+        <div class="layui-input-block">
+            <input type="text" name="age" lay-verify="title" autocomplete="off" placeholder="请输入您的年龄" class="layui-input">
+        </div>
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+            <input type="text" name="sex" lay-verify="title" autocomplete="off" placeholder="请输入您的性别" class="layui-input">
+        </div>
+        <label class="layui-form-label">信息</label>
+        <div class="layui-input-block">
+            <input type="text" name="info" lay-verify="title" autocomplete="off" placeholder="请输入您的信息" class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" id="sub">
+        <button style="" class="layui-btn" type="button" lay-submit lay-filter="demo2" id="addsub">提交</button>
+    </div>
+</form>
+
+
+
+<!--    div展示数据库中表  student取出来的数据-->
+    <div id="d1" align="center">
+
+    </div>
+</body>
+<script>
+    $.ajax({
+        type:"get",
+        url:"IndexServlet",
+        dataType:"json",
+        success: function (ret) {//ret是由服务器返回 servlet  json
+            console.log(ret)
+            var students = ret.data
+            //展示在table
+            var table = "<table border='3px' bordercolor='red' width='800px'><tr><th>编号</th><th>名字</th><th>年龄</th><th>信息</th><th colspan='2'>操作</th></tr>"
+            for (let i = 0; i < students.length; i++) {
+                table += "<tr>"
+                table += "<td>" +students[i].id+ "</td>"
+                table += "<td>" +students[i].stu_name+ "</td>"
+                table += "<td>" +students[i].age+ "</td>"
+                table += "<td>" +students[i].info+ "</td>"
+                table += "<td><button id='delt' onclick='del("+students[i].id+")'>删除</button></td>"
+                table += "<td><button id='updat' onclick='update("+students[i].id+")'>修改</button></td>"
+
+
+                table += "</tr>"
+            }
+            table += "</table>"
+            $("#d1").html(table)//将table方到div中
+  }
+    })
+
+    //删除的函数
+    function del(sid) {
+        var ret = confirm("是否删除学生！！！");
+        if (ret) {
+            //如果true  ajax请求  点击确定按钮
+           $.ajax({
+               type:"post",
+               url:"DeleteServlet",
+               data:{id:sid},
+               dataType:"json",
+               success: function (res) {
+                   console.log(res)
+                   if (res.code == 1) {
+                       alert(res.msg)
+                       window.location.href = "student.html"
+                   } else {
+                       alert(res.msg)
+                       window.location.href = "student.html"
+                   }
+
+            }
+           })
+        } else {
+            //点击取消按钮
+            window.location.href = "student.html"
+        }
+    }
+
+    form.on('submit(demo2)', function(data){
+        console.log(JSON.stringify(data.field));
+        $.ajax({
+            url:'AddServlet',
+            method:'post',
+
+            data:data.field,
+            dataType:'JSON',
+            success:function(res){
+                if(res.status='0'){
+                    console.log(res);
+                    layer.msg("添加成功");
+                    $("#addForm")[0].reset();
+                    form.render();
+                    table.reload('test', {
+                        url:'IndexServlet'
+                    });
+                    //page();
+                }else{
+                    layer.msg("添加失败");
+                    $("#addForm")[0].reset();
+                    form.render();
+                }
+            },
+            error:function (data) {
+                layer.msg("网络错误");
+                $("#addForm")[0].reset();
+                form.render();
+            }
+        }) ;
+        layer.close(layer_index);
+    });
+
+</script>
+</html>
