@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="day43_javaMyBatis:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>day43_javaMyBatis</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="day43_javaMyBatis-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="day43_javaMyBatis:war exploded" />
+    </root>
+  </artifact>
+</component>

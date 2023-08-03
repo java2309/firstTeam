@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace = 所需实现的接口全限定名-->
+<mapper namespace="com.sq.dao.UserDao">
+
+    <!-- 查询所有
+ 		 id：要和接口中的方法名一致
+		 resultType： 该sql语句返回结q果类型的全限定类名或别名，如果返回的是集合，则是集合的泛型类型
+	-->
+<!--    查询所有用户-->
+    <select id="findAllUser" resultType="com.sq.pojo.User">
+        select id,name,password from t_user
+    </select>
+<!--    添加-->
+    <insert id="addUser" >
+        insert into t_user(name,password) values( #{name},#{password})
+    </insert>
+<!--    查询单个用户-->
+    <select id="findById" resultType="com.sq.pojo.User">
+        select * from t_user where id = #{id};
+    </select>
+<!--  模糊查询  -->
+    <select id="findByName1" resultType="com.sq.pojo.User">
+        select * from t_user where name like #{name};
+    </select>
+    <select id="findByName2" resultType="com.sq.pojo.User">
+        select * from t_user where name like "%${name}%";
+    </select>
+    <select id="findByName3"  resultType="com.sq.pojo.User">
+        select * from t_user where name like concat('%',#{name},'%');
+    </select>
+<!--    删除-->
+    <delete id="deleteUserById">
+        delete from t_user where id = #{id};
+    </delete>
+<!--    修改-->
+    <update id="updateUser">
+        update t_user set name = #{name} where id = #{id};
+    </update>
+<!--    总记录数-->
+    <select id="getTotalCount" resultType="int">
+        select count(id) from t_user;
+    </select>
+<!--    分页-->
+    <select id="findPageData" resultType="com.sq.pojo.User">
+        SELECT * FROM t_user LIMIT #{first},#{second};
+    </select>
+
+</mapper>
