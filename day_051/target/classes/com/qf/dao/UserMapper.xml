@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace所需实现的接口全限定名-->
+<mapper namespace="com.qf.dao.UserDao">
+<!--下面就要开始写他们方法的sql语句-->
+<!--查询所有
+id：要和接口中的方法名一致
+resultType：最后查出来的要存在对象里，该sql语句返回结结果类型的全限定类名或别名，如果返回的是集合，则是集合的泛型类型
+增删改查是什么类型，就用上什么标签
+-->
+    <select id="findAll" resultType="user">
+        select id,name,password from t_user
+    </select>
+<!--查询一条数据
+parameterType 当有参数的时候可以写 告知参数的数据类型，有很多内置的，不用都像user起别名可以省略
+#{}在mybatis运行时会变成问号，里面要与对象的属性名一致
+-->
+    <select id="findById" parameterType="int" resultType="user">
+        select * from t_user where id = #{id}
+    </select>
+<!--添加一条数据，parameterType的参数是一个类的话
+    那么sql的参数是一个类下面的属性
+-->
+<!--
+添加用户  同时可以获取当前自增的id
+        SELECT LAST_INSERT_ID(); 可以获取最后插入数据的id,也属于查询的一种
+        keyProperty：实体类中的属性名
+        keyColumn: 数据库中 字段的名字列名
+        resultType：返回类型
+        order：执行sql语句之前返回还是之后返回
+-->
+    <insert id="addUser" parameterType="user">
+        <selectKey keyProperty="id" keyColumn="id" resultType="int">
+            select last_insert_id()
+        </selectKey>
+        insert into t_user (name, password) values (#{name}, #{password})
+    </insert>
+<!--修改一条数据-->
+    <update id="updateUser" parameterType="user">
+        update t_user set name = #{name} where id = #{id}
+    </update>
+<!--模糊查询3中类型-->
+<!--#{} 和 ${}区别：(面试问的区别，两种)
+        1.#{}是占位符，可以防止sql注入；${}是拼接符，不可以防止sql注入
+        2.能用#{}的地方尽量使用#{}，在使用order by语句时，必须使用${}
+        3.只有一个基本数据类型的参数时，${}中的名称建议写value，不要写其它名称，会报错-->
+<!--第一种，在里面怼百分号，${}在mybatis运行时回自动变成对象-->
+    <select id="findByName1" parameterType="string" resultType="user">
+        select * from t_user where name like "%${name}%"
+    </select>
+<!--第二种，直接来个问号，在外面怼百分号，不建议-->
+    <select id="findByName2" parameterType="string" resultType="user">
+        select * from t_user where name like #{name}
+    </select>
+<!--第三种一个concat方法-->
+    <select id="findByName3" parameterType="string" resultType="user">
+        select * from t_user where name like concat('%',#{name},'%')
+    </select>
+<!--跟分页有关的，后面有专门的分页,要跟前面的对起-->
+    <select id="getPageData" resultType="user">
+        select * from t_user limit  #{first}, #{second}
+    </select>
+<!--查询总个数-->
+    <select id="getTotalCount" resultType="user">
+        select count(*) from t_user
+    </select>
+
+    <!--    查询的本质就是:  将数据库中的数据映射给实体类下面的属性,先来个起别名-->
+    <!--    扩展 当数据库中查询的字段和实体类中属性没有对应上，咋解决？自己设-->
+    <resultMap id="userResultMap" type="user">
+    <!--        手动关联主键列名和属性-->
+    <!--        id标签  字段是主键自增  才用id、标签
+                其他字段 用result标签即可
+    -->
+        <id property="id" column="t_id"></id>
+        <result property="name" column="t_name"></result>
+        <result property="password" column="t_password"></result>
+    </resultMap>
+    <select id="findAll1" resultMap="userResultMap">
+        select id as t_id, name as t_name, password as t_password from t_user
+    </select>
+</mapper>
