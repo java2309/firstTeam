@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace = 所需实现的接口全限定名-->
+<mapper namespace="com.qf.dao.PassengerDao">
+    <resultMap id="PassengerMap" type="com.qf.pojo.Passenger">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="birthday" column="birthday"/>
+        <association property="passport" javaType="com.qf.pojo.Passport">
+            <id property="id" column="t_id"/>
+            <result property="nationality" column="nationality"/>
+            <result property="expire" column="expire"/>
+            <result property="passenger_id" column="passenger_id"/>
+        </association>
+    </resultMap>
+    <select id="findAll" resultMap="PassengerMap">
+        select tp1.*,tp2.id as t_id,tp2.nationality,tp2.expire,tp2.passenger_id from t_passenger tp1 inner join t_passport tp2 on tp1.id=tp2.passenger_id
+    </select>
+</mapper>

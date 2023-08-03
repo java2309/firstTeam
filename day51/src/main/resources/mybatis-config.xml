@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?><!-- 文档声明 -->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd"><!-- 约束声明 -->
+
+<!-- mybatis的全局配置文件 -->
+<configuration>
+    <properties resource="druid.properties"></properties>
+    <typeAliases>
+        <package name="com.qf.pojo"/>
+    </typeAliases>
+    <!-- 配置分页插件 -->
+    <plugins>
+            <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 指定分页插件使用哪种方言 -->
+            <property name="helperDialect" value="mysql"/>
+            <!-- 分页合理化参数 -->
+            <property name="reasonable" value="true"/>
+            <!-- 支持通过 Mapper 接口参数来传递分页参数 -->
+            <property name="supportMethodsArguments" value="true"/>
+
+        </plugin>
+
+    </plugins>
+    <!-- 配置mybatis的开发环境-->
+    <environments default="development">
+        <environment id="development">
+            <!-- 事务管理方式：
+             JDBC:将事务交给JDBC管理
+             MANAGED：自己管理事务
+            -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置数据源即连接池：
+                POOLED:使用连接池
+                UNPOOLED:不使用连接池
+                JNDI：已过时
+            -->
+            <dataSource type="com.qf.config.MyDruidDataSourceFactory">
+                <!-- com.mysql.jdbc.Driver -->
+                <property name="driverClass" value="${driver}"/>
+                <!-- jdbc:mysql:///demo?characterEncoding=utf-8 -->
+                <property name="jdbcUrl" value="${url}"/>
+                <!-- root -->
+                <property name="username" value="${username}"/>
+                <!-- root -->
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 导入mapper.xml映射文件-->
+    <mappers>
+        <mapper resource="com/qf/mapper/PassengerMapper.xml"></mapper>
+    </mappers>
+
+</configuration>
