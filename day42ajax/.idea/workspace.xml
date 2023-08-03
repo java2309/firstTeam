@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="day42ajax:Web exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="003eabe4-49a2-45e1-b3b8-8861c7e11212" name="Changes" comment="1">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/day42ajax_Web_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/controller/AddServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/controller/DeleteServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/controller/IndexServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/controller/LoginServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/controller/UpdateServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/dao/Impl/LoginDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/dao/Impl/StudenDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/dao/StudenDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/dao/TeacherDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/entity/Studen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/entity/Teacher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/entity/Z.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/service/Impl/LoginServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/service/Impl/StudentServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/service/LoginService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/service/StudentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/utils/BaseDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/com/sq/utils/JdbcUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/classes/druid.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/lib/commons-beanutils-1.9.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/lib/commons-logging-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/lib/druid-1.1.10.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/lib/fastjson-1.2.68.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/lib/jstl-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/lib/mysql-connector-java-5.1.47.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/font/iconfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/jquery-3.4.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/js/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/student.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/student1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/artifacts/day42ajax_Web_exploded/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day42ajax.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/controller/DeleteServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/controller/IndexServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/controller/LoginServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/dao/Impl/LoginDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/dao/Impl/StudenDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/dao/StudenDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/dao/TeacherDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/entity/Studen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/entity/Teacher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/entity/Z.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/service/Impl/LoginServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/service/Impl/StudentServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/service/LoginService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/service/StudentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/utils/BaseDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/com/sq/utils/JdbcUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/classes/druid.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/lib/commons-beanutils-1.9.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/lib/commons-logging-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/lib/druid-1.1.10.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/lib/fastjson-1.2.68.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/lib/jstl-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/lib/mysql-connector-java-5.1.47.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/font/iconfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/jquery-3.4.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/js/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/student.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/controller/AddServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/controller/DeleteServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/controller/IndexServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/controller/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/controller/UpdateServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/dao/Impl/LoginDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/dao/Impl/StudenDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/dao/StudenDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/dao/TeacherDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/entity/Studen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/entity/Teacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/entity/Z.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/service/Impl/LoginServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/service/Impl/StudentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/service/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/service/StudentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/utils/BaseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sq/utils/JdbcUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/druid.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/controller/AddServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/controller/DeleteServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/controller/IndexServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/controller/LoginServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/controller/UpdateServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/dao/Impl/LoginDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/dao/Impl/StudenDaoImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/dao/StudenDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/dao/TeacherDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/entity/Studen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/entity/Teacher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/entity/Z.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/service/Impl/LoginServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/service/Impl/StudentServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/service/LoginService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/service/StudentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/utils/BaseDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/sq/utils/JdbcUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/classes/druid.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-beanutils-1.9.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/commons-logging-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/druid-1.1.10.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/fastjson-1.2.68.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/jstl-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.47.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/font/iconfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/jquery-3.4.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/student.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/student1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/web/WEB-INF/web.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/login.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/out/artifacts/day42ajax_war_exploded/student.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/com/sq/controller/DeleteServlet.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/com/sq/dao/StudenDao.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/web/student.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/web/student1.html" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2TNmL6v2UqHzL747RfUGXctpmE4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/develop/IDEA/code/day42ajax&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\develop\IDEA\code\day42ajax\web" />
+      <recent name="D:\develop\IDEA\code\day42ajax\web\WEB-INF\lib" />
+      <recent name="D:\develop\IDEA\code\day42ajax\src" />
+      <recent name="D:\develop\IDEA\code\day42ajax\src\com\sq" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.73aa">
+    <configuration name="Tomcat 9.0.73" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.73" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="day42ajax:Web exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/day42ajax" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="9ea9b39d-d9d2-4eca-880c-e724ca8e6212" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50540" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="day42ajax:war exploded" />
+          <artifact name="day42ajax:Web exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.73aa" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.73" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="day42ajax:Web exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/day42ajax" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="da878a8f-d11f-4bb0-a34c-5eb58fdedde6" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62113" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="day42ajax:Web exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Tomcat Server.Tomcat 9.0.73" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.73aa" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="003eabe4-49a2-45e1-b3b8-8861c7e11212" name="Changes" comment="" />
+      <created>1690891854982</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1690891854982</updated>
+      <workItem from="1690891856187" duration="10644000" />
+      <workItem from="1690934023919" duration="305000" />
+      <workItem from="1690964046231" duration="804000" />
+      <workItem from="1690974215505" duration="8900000" />
+      <workItem from="1690985409496" duration="664000" />
+      <workItem from="1690986531734" duration="72000" />
+      <workItem from="1690986607491" duration="88000" />
+      <workItem from="1690986703734" duration="43000" />
+      <workItem from="1690986749992" duration="237000" />
+      <workItem from="1690987204458" duration="12000" />
+      <workItem from="1690987368127" duration="484000" />
+      <workItem from="1690987866283" duration="11028000" />
+      <workItem from="1691059980050" duration="1140000" />
+      <workItem from="1691061134858" duration="44000" />
+    </task>
+    <task id="LOCAL-00001" summary="1">
+      <created>1691060520217</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691060520217</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1">
+      <created>1691060831822</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1691060831822</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="zsq" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
+  </component>
+</project>

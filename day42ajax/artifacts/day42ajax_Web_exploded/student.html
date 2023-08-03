@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+<!--展示数据库中的表-->
+<div id="d1" align="center">
+
+</div>
+</body>
+<script>
+    $.ajax({
+        type:"get",
+        url:"IndexServlet",
+        dataType:"json",
+        success: function (ret){//ret是由服务器返回 servlet  json
+            console.log(ret)
+            var Studen = ret.data
+            //展示在table
+            var table = "<table border='3px' bordercolor='red' width='800px'><tr><th>编号</th><th>名字</th><th>年龄</th><th>信息</th><th colspan='2'>操作</th></tr>"
+            for (let i = 0; i < Studen.length; i++) {
+                table += "<tr>"
+                table += "<td>"+Studen[i].id+"</td>"
+                table += "<td>"+Studen[i].stu_name+"</td>"
+                table += "<td>"+Studen[i].age+"</td>"
+                table += "<td>"+Studen[i].info+"</td>"
+                table += "<td><button id='delt' onclick='del("+Studen[i].id+")'>删除</button></td>"
+                table += "</tr>"
+
+            }
+            table += "</table>"
+            $("#d1").html(table)
+        }
+    })
+    //删除函数
+    function del(sid) {
+        var ret = confirm("是否删除学生！！！");
+        if (ret) {
+            //如果true  ajax请求  点击确定按钮
+            $.ajax({
+                type: "post",
+                url: "DeleteServlet",
+                data: {id: sid},
+                dataType: "json",
+                success: function (res) {
+                    console.log(res)
+                    if (res.code == 1) {
+                        alert(res.msg)
+                        window.location.href = "student1.html"
+                    } else {
+                        alert(res.msg)
+                        window.location.href = "student1.html"
+                    }
+
+                }
+            })
+        } else {
+            //点击取消按钮
+            window.location.href = "student.html"
+        }
+    }
+</script>
+</html>
