@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--要处理的dao层-->
+<mapper namespace="com.qf.dao.PassengerDao">
+<!--
+查询 其实 就是将数据库查询的数据 赋值映射 给实体类(而这个实体类其中有些字段没有，所以我们要自己设)
+id   name   sex  birthday    t_id    nationality  expire
+1	zhansan	f	2020-11-11	10001	China	     2030-11-11
+-->
+    <resultMap id="passengerMap" type="com.qf.pojo.Passenger">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="sex" column="sex"></result>
+        <result property="birthday" column="birthday"></result>
+        <!--一对一的关系association，要对应好，不能出错-->
+        <association property="passport" javaType="com.qf.pojo.Passport">
+            <id property="id" column="t_id"></id>
+            <result property="nationality" column="nationality"></result>
+            <result property="expire" column="expire"></result>
+        </association>
+    </resultMap>
+    <!--查询的sql语句，需要自己起的都是map-->
+    <select id="findById" resultMap="passengerMap">
+        select tper.id, tper.name, tper.sex, tper.birthday, tprt.id as t_id , tprt.nationality , tprt.expire
+        from t_passenger tper
+        inner join t_passport tprt
+        on tper.id = tprt.passenger_id
+        where tper.id = #{id}
+
+    </select>
+</mapper>
