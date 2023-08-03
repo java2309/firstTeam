@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sq.dao.PassengerDao">
+
+    <resultMap id="passengerMap" type="com.sq.pojo.Passenger">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="sex" column="sex"></result>
+        <result property="birthday" column="birthday"></result>
+<!--       一对一 association-->
+<!--        一对多 用集合-->
+        <association property="passport" javaType="com.sq.pojo.Passport">
+            <id property="id" column="t_id"></id>
+            <result property="nationality" column="nationality"></result>
+            <result property="expire" column="expire"></result>
+        </association>
+    </resultMap>
+    <select id="findById" resultType="com.sq.pojo.Passenger">
+        select tpr.id,tpr.name,tpr.sex,tpr.birthday,tp.id as t_id ,tp.nationality,tp.expire from t_passenger tpr inner join t_passport tp on tpr.id=tp.passenger_id where tpr.id = #{id};
+    </select>
+</mapper>
