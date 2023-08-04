@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace = 所需实现的接口全限定名-->
+<mapper namespace="com.qf.dao.StudentDao">
+    <resultMap id="studentMap" type="com.qf.pojo.Student">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <collection property="subjectList" ofType="com.qf.pojo.Subject">
+            <id property="id" column="s_id"/>
+            <result property="name" column="s_name"/>
+            <result property="grade" column="grade"/>
+        </collection>
+    </resultMap>
+    <select id="findAllById" resultMap="studentMap">
+        SELECT stu.*,sub.id as s_id,sub.NAME as s_name, sub.grade FROM t_student stu LEFT JOIN t_stu_sub on stu.id=t_stu_sub.student_id LEFT JOIN t_subject sub on t_stu_sub.subject_id=sub.id where stu.id=#{id}
+    </select>
+</mapper>
