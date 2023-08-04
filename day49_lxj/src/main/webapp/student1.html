@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/layui.css">
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/layui.js"></script>
+
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+
+<!-- 添加的from表单 -->
+<form class="layui-form" action="" id="addForm" style="display:none" lay-filter="add" enctype="multipart/form-data">
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="学生姓名"
+                   class="layui-input">
+        </div>
+        <label class="layui-form-label">年龄</label>
+        <div class="layui-input-block">
+            <input type="text" name="age" lay-verify="title" autocomplete="off" placeholder="学生年龄"
+                   class="layui-input">
+        </div>
+        <label class="layui-form-label">信息</label>
+        <div class="layui-input-block">
+            <input type="text" name="info" lay-verify="title" autocomplete="off" placeholder="学生信息"
+                   class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" id="sub">
+        <button style="" class="layui-btn" type="button" lay-submit lay-filter="demo2" id="addsub">提交</button>
+    </div>
+</form>
+<!--修改的form表单 -->
+<form class="layui-form" action="" id="updataForm" style="display:none" lay-filter="updata"
+      enctype="multipart/form-data">
+    <div class="layui-form-item" style="display:none">
+        <label class="layui-form-label">id</label>
+        <div class="layui-input-block">
+            <input type="text" id="id" name="id" lay-verify="id" autocomplete="off" placeholder="用户名"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">名字</label>
+        <div class="layui-input-block">
+            <input type="text" id="name" name="name" lay-verify="title" autocomplete="off" placeholder="用户名"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">年龄</label>
+        <div class="layui-input-block">
+            <input type="text" id="age" name="age" lay-verify="heat" autocomplete="off" placeholder="年龄"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">信息</label>
+        <div class="layui-input-block">
+            <input type="text" id="info" name="info" lay-verify="heat" autocomplete="off" placeholder="年龄"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <button style="" class="layui-btn" type="button" lay-submit lay-filter="demo3" id="updatasub">提交</button>
+    </div>
+</form>
+<table class="layui-hide" id="test" lay-filter="test"></table>
+
+
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button type="button" class="layui-btn layui-btn-sm" id="add" lay-event="add">添加</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
+</script>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+
+<script src="js/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script>
+    layui.use('table', function () {//
+        var table = layui.table;//初始化table组件  要把数据放到table表格中9
+        var pagecount;//变量  没有赋值
+        //page();//调用了一个方法
+        // function page(){//
+        //     $.ajax({
+        //         url: 'http://localhost:8080/teacher/SelectCount',
+        //         dataType: 'json',
+        //         type: 'get',
+        //         success: function(data) {
+        //             pagecount = data.count;//赋值给了一个变量
+        //             //console.log(data.count)
+        //             console.log(pagecount)
+        //         }
+        //     });
+        //}
+        console.log(pagecount);
+        table.render({//table渲染
+            elem: '#test'//找到这个table  jquery id选择器
+            , url: 'IndexServlet'
+            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , title: '用户数据表'
+            , cols: [//数据的展示
+                [
+                    {type: 'checkbox', fixed: 'left'}
+                    , {type: 'numbers', width: 80, title: '行号', fixed: "left"}
+                    , {field: 'id', width: 80, title: '编号'}
+                    , {field: 'stu_name', width: 80, title: '名字'}
+                    , {field: 'age', width: 80, title: '年龄'}
+                    , {field: 'info', width: 80, title: '信息'}
+                    , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
+                ]
+            ]
+            , page: true//开启分页
+            , limit: 5//设置数据
+
+            , response: {
+                statusName: 'code' //规定数据状态的字段名称，默认：code
+                , dataName: 'data' //规定数据列表的字段名称，默认：data
+            }
+            //要求你的json数据 必须是{"code":0, "data":[]}
+            , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+                console.log(res.data)
+                return {//类似于success
+                    "code": res.code,   //解析接口状态
+                    "msg": res.msg,  //解析提示文本
+                    "count": res.count,       //解析数据长度
+                    "data": res.data  //解析数据列表
+                };
+            }
+        });
+//引入from表单
+        layui.use(['form', 'laydate'], function () {
+            form = layui.form;
+            form.render();
+
+            //表单取值
+            //表单取值
+            form.on('submit(demo2)', function (data) {
+                console.log(JSON.stringify(data.field));
+                $.ajax({
+                    url: 'AddServlet',
+                    method: 'get',
+
+                    data: data.field,
+                    dataType: 'JSON',
+                    success: function (res) {
+                        if (res.status = '0') {
+                            console.log(res);
+                            layer.msg("添加成功");
+                            $("#addForm")[0].reset();
+                            form.render();
+                            //page();
+                        } else {
+                            layer.msg("添加失败");
+                            $("#addForm")[0].reset();
+                            form.render();
+                        }
+                    },
+                    error: function (data) {
+                        layer.msg("网络错误");
+                        $("#addForm")[0].reset();
+                        form.render();
+                    }
+                });
+                layer.close(layer_index);
+            });
+            form.on('submit(demo3)', function (data) {
+                console.log(JSON.stringify(data.field));
+                $.ajax({
+                    url: 'UpdateServlet',
+                    method: 'get',
+                    data: data.field,
+                    dataType: 'JSON',
+                    success: function (res) {
+                        if (res.status = '0') {
+                            console.log(res);
+                            layer.msg("修改成功");
+                            $("#updataForm")[0].reset();
+                            form.render();
+                            //刷新页面
+                            table.reload('test', {
+                                url: 'IndexServlet'
+                            });
+                            //page();
+                        } else {
+                            layer.msg("修改失败");
+                            $("#updataForm")[0].reset();
+                            form.render();
+                        }
+                    },
+                    error: function (data) {
+                        layer.msg("网络错误");
+                        $("#updataForm")[0].reset();
+                        form.render();
+                    }
+                });
+                layer.close(layer_index);
+            });
+        });
+        //头工具栏事件
+        table.on('toolbar(test)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                    break;
+                case 'add':
+                    add();
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            }
+            ;
+        });
+
+        //修改  点击 编辑按钮 先查询出来
+        function updateById(data) {
+
+            layer_index = layer.open({
+                type: 1,  //可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                title: "修改", //数组第二项可以写任意css样式；如果你不想显示标题栏，你可以title: false
+                area: ['500px', '400px'], //所打开页面大小
+                content: $("#updataForm"), //内容
+                //将数据显示在框上边
+                //关闭操作
+                cancel: function () {
+                    layer.close(layer_index);
+                    $("#updataForm")[0].reset();
+
+                }
+            });
+            //刷新页面
+            table.reload('test', {
+                url: 'IndexServlet'
+            });
+        }
+
+        //删除
+        function deleteById(index) {
+
+            var url = "DeleteServlet";
+            $.ajax({
+                type: "get", //指定提交的类型 get对应 doGet()方法，post--->doPost()犯法
+                url: url,    //传输地址的URL
+                data: {"id": index}, //data代表我们的数据  key -value类型的数据
+                dataType: 'JSON',
+                async: false, //success和error代表是否返回成功，既后台给前台传输数据是否成功
+                success: function (res) {
+                    layer.msg("删除" + index + "成功");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(typeof (errorThrown));
+                }
+            });
+        }
+
+        function add() {
+            layer_index = layer.open({
+                type: 1,  //可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                title: "添加", //数组第二项可以写任意css样式；如果你不想显示标题栏，你可以title: false
+                area: ['500px', '400px'], //所打开页面大小
+                content: $("#addForm"), //内容
+                //关闭操作
+                cancel: function () {
+                    layer.close(layer_index);
+                    $("#addForm")[0].reset();
+                    $('#demoe1').attr('src', "");
+                }
+            });
+            //刷新页面
+            table.reload('test', {
+                url: 'IndexServlet'
+            });
+        }
+
+        //监听行工具事件
+        table.on('tool(test)', function (obj) {
+            var data = obj.data;
+            console.log(data)
+            if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                    obj.del();
+                    //在这里写删除方法
+                    deleteById(data.id);
+                    layer.close(index);
+                });
+            } else if (obj.event === 'edit') {
+                form.val("updata", { //formTest 即 class="layui-form" 所在元素属性 lay-filter="" 对应的值
+                    "id": data.id // "name": "value"
+                    , "name": data.stu_name
+                    , "age": data.age
+                    , "info": data.info
+                });
+                updateById(data);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+

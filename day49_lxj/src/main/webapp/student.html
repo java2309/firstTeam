@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+<!--    div展示数据库中表  student取出来的数据-->
+    <div id="d1" align="center">
+
+    </div>
+<!--fade 隐藏 -->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                <h4 class="modal-title" id="myModalLabel">修改</h4>
+
+            </div>
+            <form id="form">
+<!--          隐藏的输入框没有展示的 但是带的servlet中-->
+                <input type="hidden" name="id" id="id">
+            <div class="modal-body">
+
+                <div class="form-group">
+
+                    <label for="name">名字</label>
+
+                    <input type="text" name="name" class="form-control" id="name" placeholder="名字">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="age">年龄</label>
+
+                    <input type="text" name="age" class="form-control" id="age" placeholder="年龄">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="info">信息</label>
+
+                    <input type="text" name="info" class="form-control" id="info" placeholder="信息">
+
+                </div>
+
+
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+
+                <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交</button>
+
+            </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+</body>
+<script>
+    $.ajax({
+        type:"get",
+        url:"IndexServlet?pageNo=1",
+        dataType:"json",
+        success: function (ret) {//ret是由服务器返回 servlet  json
+            console.log(ret)
+            var students = ret.data
+            //展示在table
+            var table = "<table border='3px' bordercolor='red' width='800px'><tr><th>编号</th><th>名字</th><th>年龄</th><th>信息</th><th colspan='2'>操作</th></tr>"
+            for (let i = 0; i < students.length; i++) {
+                table += "<tr>"
+                table += "<td>" +students[i].id+ "</td>"
+                table += "<td>" +students[i].stu_name+ "</td>"
+                table += "<td>" +students[i].age+ "</td>"
+                table += "<td>" +students[i].info+ "</td>"
+                table += "<td><button id='delt' onclick='del("+students[i].id+")'>删除</button></td>"
+                student = JSON.stringify(students[i])
+                table += "<td><button id='updat' onclick='update("+student+")'>修改</button></td>"
+
+                table += "</tr>"
+            }
+            table += "</table>"
+            $("#d1").html(table)//将table方到div中
+  }
+    })
+
+    //修改的弹框效果展示出来
+    function update(student) {
+        console.log(student)
+        $("#myModalLabel").text("编辑");
+        $("#id").val(student.id)
+        $("#name").val(student.stu_name)
+        $("#age").val(student.age)
+        $("#info").val(student.info)
+        $('#myModal').modal();//将隐藏的弹框给展示出来
+    }
+    //当点击修改的一瞬间将数据发送给servlet 然后连接数据库修改
+    $("#btn_submit").click(function () {
+        $.ajax({
+            type:"post",
+            url:"UpdateServlet",
+            data:$("#form").serialize(),
+            dataType:"json",
+            success:function(res) {
+                if (res.code == 1) {
+                    alert(res.msg)
+                    window.location.href = "student.html"
+                } else {
+                    alert(res.msg)
+                    window.location.href = "student.html"
+                }
+            }
+
+        })
+    })
+    //删除的函数
+    function del(sid) {
+        var ret = confirm("是否删除学生！！！");
+        if (ret) {
+            //如果true  ajax请求  点击确定按钮
+           $.ajax({
+               type:"post",
+               url:"DeleteServlet",
+               data:{id:sid},
+               dataType:"json",
+               success: function (res) {
+                   console.log(res)
+                   if (res.code == 1) {
+                       alert(res.msg)
+                       window.location.href = "student.html"
+                   } else {
+                       alert(res.msg)
+                       window.location.href = "student.html"
+                   }
+
+            }
+           })
+        } else {
+            //点击取消按钮
+            window.location.href = "student.html"
+        }
+    }
+</script>
+</html>

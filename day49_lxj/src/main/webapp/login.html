@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div align="center">
+    <form id="testform">
+        姓名:<input type="text" name="user" placeholder="请输入姓名..."><br>
+        密码:<input type="password" name="password" placeholder="请输密码..."><br>
+        <button type="button" id="login">登陆</button>
+    </form>
+
+</div>
+<script>
+    console.log($("#testform").serialize())
+    $("#login").click(function () {
+        //发送表单中的数据给一个LoginServlet  通过 ajax技术
+        //user=骚磊&password=22222
+        $.ajax({
+            type: "post",//以post请求的方式进行提交数据
+            url: "LoginServlet",//提交给哪个资源
+            data: $("#testform").serialize(),//带着数据给LoginServlet
+            dataType: "json",//预期服务器返回的数据类型
+            success: function (data) {//data是
+                console.log(data)
+                if (data.code == 1) {
+                    //登陆成功跳转主页面
+                    window.location.href = "student1.html";
+                } else if (data.code == 2) {
+                    alert("用户不存在")
+                } else if (data.code == 3) {
+                    alert("密码错误")
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>
