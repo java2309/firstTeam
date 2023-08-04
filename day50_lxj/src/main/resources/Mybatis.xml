@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="druid.properties" />
+    <plugins>
+        <!-- com.github.pagehelper为PageHelper类所在包名 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!-- 指定分页插件使用哪种方言 -->
+            <property name="helperDialect" value="mysql"/>
+            <!-- 分页合理化参数 -->
+            <property name="reasonable" value="true"/>
+            <!-- 支持通过 Mapper 接口参数来传递分页参数 -->
+            <property name="supportMethodsArguments" value="true"/>
+        </plugin>
+    </plugins>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据源（连接池） -->
+            <dataSource type="com.qf.config.MyDruidDataSourceFactory">
+                <property name="driverClassName" value="${driverClassName}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/qf/dao/UserMapper.xml" />
+    </mappers>
+</configuration>

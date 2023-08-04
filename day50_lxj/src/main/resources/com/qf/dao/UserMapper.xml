@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.UserDao">
+    <resultMap id="userMap" type="com.qf.entity.Passenger">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="sex" column="sex" />
+        <result property="birthday" column="birthday" />
+        <association property="passport" javaType="com.qf.entity.Passport">
+            <id property="id" column="p_id" />
+            <result property="nationality" column="nationality"/>
+            <result property="expire" column="expire"/>
+            <result property="passenger_id" column="passenger_id"/>
+        </association>
+    </resultMap>
+    <select id="selectById" resultMap="userMap" >
+        select tp.*,tpt.nationality,tpt.expire
+        from t_passenger tp
+        INNER JOIN t_passport tpt
+        on tp.id = tpt.passenger_id where tp.id = #{id}
+    </select>
+</mapper>
