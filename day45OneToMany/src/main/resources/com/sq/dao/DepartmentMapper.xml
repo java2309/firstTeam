@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sq.dao.DepartmentDao">
+    <resultMap id="departmentMap" type="com.sq.pojo.Department">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="location" column="location"></result>
+        <collection property="employee" ofType="com.sq.pojo.Employee" >
+            <id property="id" column="e_id"></id>
+            <result property="name" column="e_name"></result>
+            <result property="salary" column="salary"></result>
+        </collection>
+    </resultMap>
+    <select id="findById" resultMap="departmentMap">
+        SELECT td.id,td.name,td.location,te.id as e_id,te.name as e_name,te.salary FROM
+        t_department td
+        INNER JOIN t_employee te
+        ON td.id = te.dept_id
+        where td.id = #{id}
+    </select>
+</mapper>
