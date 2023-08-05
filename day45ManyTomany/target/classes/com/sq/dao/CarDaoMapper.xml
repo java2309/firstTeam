@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sq.dao.CarDao">
+
+    <cache></cache>
+
+    <sql id="baseSQL">
+        select * from t_car
+    </sql>
+<select id="findAll" resultType="com.sq.pojo.Car">
+    -- 引入sql片段
+    <include refid="baseSQL"></include>
+</select>
+<!--    查询单个-->
+    <select id="findById" resultType="com.sq.pojo.Car">
+        <include refid="baseSQL"></include>
+        where id = #{id}
+    </select>
+<!--条件查询-->
+    <select id="findCar" parameterType="com.sq.vo.CarVo" resultType="com.sq.pojo.Car">
+        select * from t_car
+        <where>
+            <if test="queryName != null and queryName != ''">
+                and name = #{queryName}
+            </if>
+            <if test="queryBrand != null and queryBrand != ''">
+                and brand = #{queryBrand}
+            </if>
+            <if test="queryColor != null and queryColor != ''">
+                and color = #{queryColor}
+            </if>
+            <if test="queryPrice != null and queryPrice != ''">
+                and price = #{queryPrice}
+            </if>
+        </where>
+    </select>
+
+    <update id="update" parameterType="com.sq.pojo.Car">
+        update t_car
+        <set>
+           <if test="name != null and name != ''">
+               name = #{name},
+           </if>
+            <if test="brand != null and brand != ''">
+                brand = #{brand},
+            </if>
+
+            <if test="color != null and color != ''">
+            color = #{color},
+            </if>
+        </set>
+            <where>
+                <if test="id != null">
+                    id = #{id}
+                </if>
+            </where>
+    </update>
+    <!--    同样是修改换一种写法-->
+    <update id="update1" parameterType="com.sq.pojo.Car">
+        update t_car
+        <!--
+                   trim可以替代set  和 where
+                   prefix： 表示标签写在前面的意思
+                   suffixOverrides： 表示忽略sql语句后面的符号
+                   prefixOverrides：  表示忽略sql语句前面的符号
+           -->
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="brand != null and brand != ''">
+                brand = #{brand},
+            </if>
+
+            <if test="color != null and color != ''">
+                color = #{color},
+            </if>
+        </trim>
+            <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null">
+                    and id = #{id}
+                </if>
+            </trim>
+    </update>
+    <delete id="deleteByIds" parameterType="com.sq.pojo.Car">
+        delete from t_car
+        <where>
+            id in
+            <!-- 批量删除
+            foreach标签表示遍历
+            collection属性：如果参数是数组，则值为：array
+            如果参数是List集合，则值为：list
+            如果参数是set或者其他集合，则值为：@Param("值")
+-->
+               <foreach collection="list" open="(" close=")" separator="," item="id">
+                   #{id}
+               </foreach>
+        </where>
+    </delete>
+
+</mapper>

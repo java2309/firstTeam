@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sq.dao.StudentDao">
+    <resultMap id="studentMap" type="com.sq.pojo.Student">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="sex" column=" sex"></result>
+        <collection property="subject" ofType="com.sq.pojo.Subject">
+        <id property="id" column="t_id"></id>
+        <result property="name" column="t_name"></result>
+        <result property="grade" column="grade"></result>
+        </collection>
+    </resultMap>
+    <select id="findById" resultMap="studentMap">
+        SELECT ts.id,ts.name,ts.sex,tsu.id as t_id,tsu.name as t_name, tsu.grade FROM
+        t_student ts
+        INNER JOIN t_stu_sub tss
+        ON ts.id = tss.student_id
+        INNER JOIN t_subject tsu
+        ON tss.subject_id = tsu.id
+        where ts.id = #{id}
+    </select>
+</mapper>
