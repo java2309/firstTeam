@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--找到映射的对象-->
+<mapper namespace="com.qf.dao.StudentDao">
+    <resultMap id="studentMap" type="com.qf.pojo.Student">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="sex" column="sex"></result>
+<!--不难看出是一对多-->
+        <collection property="subjectList" ofType="com.qf.pojo.Subject">
+            <id property="id" column="subject_id"></id>
+            <result property="name" column="subject_name"></result>
+            <result property="grade" column="grade"></result>
+        </collection>
+    </resultMap>
+<!--sql语句搞起来,看有起别名的没-->
+    <select id="findById" resultMap="studentMap">
+<!--通过学生来查找这个学生选择的课程-->
+        select tsd.id, tsd.name, tsd.sex, tsj.id as subject_id, tsj.name as subject_name, tsj.grade
+        from t_student tsd
+        inner join t_stu_sub tss
+        on tsd.id = tss.student_id
+        inner join t_subject tsj
+        on tsj.id = tss.subject_id
+        where tsd.id = #{id}
+    </select>
+</mapper>

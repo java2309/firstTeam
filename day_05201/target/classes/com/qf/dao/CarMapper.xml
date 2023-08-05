@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--先找到映射对象-->
+<mapper namespace="com.qf.dao.CarDao">
+<!--只读，跟缓存有关系-->
+<!--    <cache readOnly="true"/>-->
+<!--sql片段，用的时候直接引用id即可-->
+    <sql id="baseSQL">
+        select * from t_car
+    </sql>
+    <!--查询所有的数据-->
+    <select id="findAll"  resultType="com.qf.pojo.Car">
+        <!--引入sql片段-->
+        <include refid="baseSQL"/>
+    </select>
+    <!--查询单个数据-->
+    <select id="findById" resultType="com.qf.pojo.Car">
+<!--引入sql片段-->
+        <include refid="baseSQL"/>
+        where id = #{id}
+    </select>
+    <!--条件查询，用到了动态的sql语句，需要另一个类来表示，把其所需的条件字段写出来-->
+    <select id="findCar" parameterType="com.qf.vo.CarVo" resultType="com.qf.pojo.Car">
+        <!-- select * from car where name = ?and brand=？
+            select * from car where  brand = ？
+            select * from car where  name=？
+            select * from car
+          -->
+        <include refid="baseSQL"/>
+<!--        select * from t_car-->
+        <!--where 标签可以被编译成 where关键字  在写if语句  and在前可以省略，四个查询的条件一一写就行了 -->
+<!--        先是！=null,然后不等于字符串，这里面用单引号表示''-->
+        <where>
+            <if test="queryName != null and queryName != ''">
+                and name = #{queryName}
+            </if>
+            <if test="queryBrand != null and queryBrand != ''">
+                and  brand = #{queryBrand}
+            </if>
+            <if test="queryColor != null and queryColor != ''">
+                and  color = #{queryColor}
+            </if>
+            <if test="queryPrice != null and queryPrice != ''">
+                and  price = #{queryPrice}
+            </if>
+        </where>
+    </select>
+    <!--    更新，一般不需要结果集，参数类型在用实体类的字段即可-->
+    <update id="update" parameterType="com.qf.pojo.Car">
+        <!--        update t_car set name=? where id =?
+                    update t_car set brand=? where id =?
+                    update t_car set color=? where id =?
+                    update t_car set num=? where id =?
+                    update t_car set name=? ,brand=? where id =?
+                    update t_car set num=?, brand=? where id =?
+        -->
+<!--也可以写sql片段-->
+        update t_car
+        <!--        使用set标签
+                 set标签：忽略逗号，在后面
+                 也是if来一波
+        -->
+        <set>
+            <if test="name != null and name!= ''">
+                name=#{name},
+            </if>
+            <if test="brand != null and brand!= ''">
+                brand=#{brand},
+            </if>
+            <if test="price != null and price!= ''">
+                price=#{price},
+            </if>
+            <if test="color != null and color != ''">
+                color =#{color},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <!--    换一种写法 用trim来写，记得略微多一些-->
+    <update id="update1">
+        update t_car
+        <!--
+                trim可以替代set  和 where
+                prefix： 表示标签写在前面的意思
+                suffixOverrides： 表示忽略sql语句后面的符号
+                prefixOverrides：  表示忽略sql语句前面的符号
+        -->
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="color != null and color != ''">
+                color = #{color},
+            </if>
+        </trim>
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="brand != null and brand !=''">
+                and brand = #{brand}
+            </if>
+        </trim>
+    </update>
+    <delete id="deleteByIds">
+        <!-- 批量删除
+     foreach标签表示遍历，多选吗，肯定有很多的id
+        collection属性：如果参数是数组，则值为：array
+                       如果参数是List集合，则值为：list
+                       如果参数是set或者其他集合，则值为：@Param("值")，只要对应，怎么起都可以
+        open:开始的
+        close:结束的
+        separator:数据的中间用什么符号隔开
+        item:遍历的形参,弄成好记的，比较好
+        也就是字符串拼接，拼着来，遍历
+-->
+        delete from t_car
+        <where>
+            id in
+            <foreach collection="wl" open="(" close=")" separator="," item="id">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+</mapper>
