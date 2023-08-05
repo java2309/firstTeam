@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--要映射的对象-->
+<mapper namespace="com.qf.dao.DepartmentDao">
+<!--来个resultMap对实体类进行赋值，tape就是找到这个实体类，主键是不一样的,前者是数据库(实体类)的字段，后者是咱们sql语句里写的-->
+    <resultMap id="departmentMap" type="com.qf.pojo.Department">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="location" column="location"></result>
+<!--首先是一对多，标签不一样，然后对应实体类的内容,要找到这个实体类-->
+        <collection property="emps" ofType="com.qf.pojo.Employee">
+            <id property="id" column="e_id"></id>
+            <result property="name" column="e_name"></result>
+            <result property="salary" column="salary"></result>
+        </collection>
+    </resultMap>
+    <!--来个sql语句，是查询类型的,需不需要对字段进行起别名，要的话来个Map-->
+    <select id="findById" resultMap="departmentMap">
+        select td.id, td.name, td.location, te.id as e_id, te.name as e_name, te.salary
+        from t_department td
+        inner join t_employee te
+        on td.id = te.dept_id
+        where td.id = #{id}
+    </select>
+</mapper>
+

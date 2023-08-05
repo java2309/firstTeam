@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--先找到要映射的对象-->
+<mapper namespace="com.qf.dao.EmployeeDao">
+<!--找到要对其赋值的实体类，以谁为主肯定不写在联系中-->
+    <resultMap id="employeeMap" type="com.qf.pojo.Employee">
+        <id property="id" column="e_id"></id>
+        <result property="name" column="e_name"></result>
+        <result property="salary" column="salary"></result>
+<!--一对一的情况，标签不一样，类型还是找你要赋值的那个类-->
+        <association property="department" javaType="com.qf.pojo.Department">
+            <id property="id" column="id"></id>
+            <result property="name" column="name"></result>
+            <result property="location" column="location"></result>
+        </association>
+    </resultMap>
+<!--有的字段需要特殊操作-->
+    <select id="findById1" resultMap="employeeMap">
+        select td.id, td.name, td.location, te.id as e_id, te.name as e_name, te.salary
+        from t_department td
+        inner join t_employee te
+        on td.id = te.dept_id
+        where te.id = 1
+    </select>
+</mapper>

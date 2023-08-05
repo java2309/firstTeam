@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- mybatis的主配置文件 -->
+<configuration>
+
+    <!-- 配置外部文件 -->
+    <properties resource="druid.properties"></properties>
+<!--    <settings>-->
+<!--        &lt;!&ndash; 开启延迟加载，懒加载，默认false &ndash;&gt;-->
+<!--        <setting name="lazyLoadingEnabled" value="true"/>-->
+
+<!--        &lt;!&ndash; 将积极加载改为消极加载即按需加载 &ndash;&gt;-->
+<!--        <setting name="aggressiveLazyLoading" value="false" />-->
+
+<!--        &lt;!&ndash; 由于重写了实体类中toString方法，需要排除不相干的方法导致的立即加载情况&ndash;&gt;-->
+<!--        <setting name="lazyLoadTriggerMethods" value="toString()"/>-->
+<!--    </settings>-->
+
+    <!-- 配置分页插件 -->
+
+    <!-- 官网环境配置 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据源（连接池） -->
+            <dataSource type="com.qf.config.MyDruidDataSourceFactory">
+                <property name="driverClass" value="${driver}"/>
+                <property name="jdbcUrl" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/qf/dao/DepartmentMapper.xml"></mapper>
+        <mapper resource="com/qf/dao/EmployeeMapper.xml"></mapper>
+    </mappers>
+</configuration>
