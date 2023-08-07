@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 初始化一个Car对象，如果类中只提供了有参构造器，则不能再使用无参构造器实例化对象 -->
+    <bean id="car" class="com.sq.pojo.Car">
+<!--构造器注入-->
+        <constructor-arg name="cid" value="1"></constructor-arg>
+        <constructor-arg name="cname" value="撤吧"></constructor-arg>
+    </bean>
+    <!-- 初始化第一个User对象 -->
+    <bean id="user1" class="com.sq.pojo.User">
+        <constructor-arg name="id" value="101"></constructor-arg>
+        <constructor-arg name="name" value="穿白衬衫"></constructor-arg>
+        <constructor-arg name="password" value="123132"></constructor-arg>
+        <constructor-arg name="car" ref="car"></constructor-arg>
+    </bean>
+    <!-- 初始化第一个User对象 -->
+    <bean id="user2" class="com.sq.pojo.User">
+        <constructor-arg name="name" value="茶茶"></constructor-arg>
+        <constructor-arg name="id" value="102"></constructor-arg>
+        <constructor-arg name="password" value="12711"></constructor-arg>
+        <constructor-arg name="car" ref="car"></constructor-arg>
+    </bean>
+</beans>
