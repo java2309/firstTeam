@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+  该id属性是标识单个 bean 定义的字符串。(不能重复)
+  该class属性定义 bean 的类型并使用完全限定的类名。
+  scope：常用的是单例（singleton）和多例（prototype）
+-->
+    <bean id="User" class="com.sq.pojo.User" scope="singleton" init-method="initUser" destroy-method="destroyUser">
+        <!-- set方法赋值
+        property表示当前对象的属性
+        name：属性名
+        value：给当前属性赋值
+        ref：用于注入其他Bean对象（在spring容器中已经创建了）
+        -->
+        <property name="id" value="1"></property>
+        <property name="name" value="jay"></property>
+        <property name="password" value="123123"></property>
+        <property name="car" ref="Car"></property>
+    </bean>
+<!--    初始化Car对象-->
+    <bean id="Car" class="com.sq.pojo.Car">
+        <property name="cid" value="2013"></property>
+        <property name="cname" value="奔驰"></property>
+    </bean>
+    <!-- 复杂类型注入 -->
+    <bean id="collectionVo" class="com.sq.vo.CollectionVo">
+        <!-- 数组 -->
+        <property name="arr">
+            <array>
+                <value>132</value>
+                <value>34</value>
+                <value>15</value>
+            </array>
+        </property>
+        <!-- list -->
+        <property name="list" >
+            <list>
+                <value>jack</value>
+                <value>差别</value>
+                <value>此前并未</value>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <value>参加哦</value>
+                <value>刹那间啊</value>
+                <value>阿奎那</value>
+            </set>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="a" value="称霸江湖"></entry>
+                <entry key-ref="Car" value-ref="Car"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="id">1</prop>
+                <prop key="name">擦肩</prop>
+                <prop key="password">123231</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
