@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+
+    <!-- 扫描对应包下的注解 -->
+    <context:component-scan base-package="com.sq"></context:component-scan>
+
+    <!-- 引入配置文件-->
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="username" value="${db.username}"></property>
+        <property name="password" value="${db.password}"></property>
+        <property name="url" value="${db.url}"></property>
+        <property name="driverClassName" value="${db.driver}"></property>
+    </bean>
+
+    <!-- 配置SqlSessionFactory -->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 必选属性，配置dataSource数据源 -->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 非必选属性，可引入mybatis-config.xml配置文件 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+<!--        &lt;!&ndash; 非必选属性，当Mapper接口和对应的Mapper.xml文件不在同一目录时，-->
+<!--        指定配置Mapper.xml文件的具体位置，这里使用的是通配符配置方式 &ndash;&gt;-->
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
+
+        <!-- 分页配置 -->
+        <!-- 配置插件 -->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
+                        <value>
+                            helperDialect=mysql
+                            reasonable=true
+                            supportMethodsArguments=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <!-- 扫描Mapper接口，生成代理对象 -->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.sq.dao"></property>
+    </bean>
+
+</beans>
