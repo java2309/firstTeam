@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+<!--创建bean-->
+    <bean id="userService" class="com.qf.service.impl.UserServiceImpl"></bean>
+    <bean id="userServiceAdvice" class="com.qf.advice.UserServiceAdvice"></bean>
+<!--配置aop,将一个额外的增强方法织入到对应目标的方法中-->
+<!--默认使用JDK动态代理-->
+<!--proxy-target-class="true" 使用cglib-->
+    <aop:config proxy-target-class="true">
+<!--配置切入点-->
+        <!--写死的一种情况aop:pointcut id="pc" expression="execution(public void com.qf.service.impl.UserServiceImpl.update())||execution(public void com.qf.service.impl.UserServiceImpl.add())"-->
+        <aop:pointcut id="pc" expression="execution(public * com.qf.service.impl.*.*(..))"/>
+<!--配置切面， 增强类-->
+        <aop:aspect ref="userServiceAdvice">
+<!--对pc加一个前置通知,什么的都怼上去-->
+            <aop:before method="before" pointcut-ref="pc"></aop:before>
+            <aop:after-returning method="after_returning" pointcut-ref="pc"></aop:after-returning>
+            <aop:after method="after" pointcut-ref="pc"></aop:after>
+            <aop:after-throwing method="after_throwing" pointcut-ref="pc"></aop:after-throwing>
+            <aop:around method="around" pointcut-ref="pc"></aop:around>
+        </aop:aspect>
+    </aop:config>
+    </beans>
