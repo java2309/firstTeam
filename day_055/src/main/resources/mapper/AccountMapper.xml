@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--要映射的，要对应好-->
+<mapper namespace="com.qf.dao.AccountDao">
+<!--转出的方法-->
+    <update id="outMoney">
+        update t_account set money = money - #{money} where id = #{fromId}
+    </update>
+<!--转入的方法-->
+    <update id="inMoney">
+        update t_account set money = money + #{money} where id = #{toId}
+    </update>
+</mapper>
